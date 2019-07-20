@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Post;
 use Illuminate\Http\Request;
+use App\Http\Requests\PostStoreRequest;
 
 class PostController extends Controller
 {
@@ -39,16 +40,13 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PostStoreRequest $request)
     {
         $post = new Post();
-        $attributes = $request->validate([
-            'title' => 'required',
-            'body'  => 'required | min:5'
-        ]);
+        $validatedData = $request->validated();
         
-        $attributes['user_id'] = auth()->id();
-        $post->fill($attributes);
+        $validatedData['user_id'] = auth()->id();
+        $post->fill($validatedData);
         $post->save();
         return redirect()->route('posts.index')->with('msg', 'Post Created: ' . $post->title );
     }

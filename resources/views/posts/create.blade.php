@@ -3,6 +3,9 @@
 @section('content')
 <div class="section">
     <div class="container">
+        @include('errors')
+    </div>
+    <div class="container">
         {{-- Form for new post --}}
         <form action="{{ route('posts.store') }}" method="POST">
             @csrf
@@ -35,9 +38,6 @@
         </form>
     </div>
     <br>
-    <div class="container">
-        @include('errors')
-    </div>
 </div>
     
 @endsection

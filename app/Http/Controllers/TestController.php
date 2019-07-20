@@ -14,8 +14,7 @@ class TestController extends Controller
      */
     public function __invoke(Request $request)
     {
-        return response('simple response');
-        // return response()->download(resource_path('files/file.txt'));
+        return view('test');
     }
 
 }
