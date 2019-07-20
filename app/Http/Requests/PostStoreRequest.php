@@ -24,7 +24,7 @@ class PostStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'bail|required|unique:posts|min:10|max:255',
+            'title' => 'bail|required|unique:posts|max:255',
             'body'  => 'required|min:5'
         ];
     }

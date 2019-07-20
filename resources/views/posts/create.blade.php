@@ -4,6 +4,9 @@
 <div class="section">
     <div class="container">
         @include('errors')
+        @error('title')
+         <p>Title error</p>  
+        @enderror
     </div>
     <div class="container">
         {{-- Form for new post --}}
@@ -13,7 +16,7 @@
             <div class="field">
                 <label class="label">Title</label>
                 <div class="control">
-                  <input name="title" class="input" type="text" placeholder="Enter title here" value="{{ old('title') }}">
+                  <input name="title" class="input @error('title') is-danger @enderror" type="text" placeholder="Enter title here" value="{{ old('title') }}">
                 </div>
             </div>
 
@@ -21,7 +24,7 @@
             <div class="field">
                 <label class="label">Body</label>
                 <div class="control">
-                    <textarea name="body" class="textarea" placeholder="Enter you post here">{{ old('body') }}</textarea>
+                    <textarea name="body" class="textarea @error('body') is-danger @enderror" placeholder="Enter you post here">{{ old('body') }}</textarea>
                 </div>
             </div>
 
