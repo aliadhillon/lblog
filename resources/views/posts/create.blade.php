@@ -2,12 +2,9 @@
 
 @section('content')
 <div class="section">
-    <div class="container">
+    {{-- <div class="container">
         @include('errors')
-        @error('title')
-         <p>Title error</p>  
-        @enderror
-    </div>
+    </div> --}}
     <div class="container">
         {{-- Form for new post --}}
         <form action="{{ route('posts.store') }}" method="POST">
@@ -17,14 +14,19 @@
                 <label class="label">Title</label>
                 <div class="control">
                   <input name="title" class="input @error('title') is-danger @enderror" type="text" placeholder="Enter title here" value="{{ old('title') }}">
+                  @error('title')
+                    <span class="has-text-danger">{{ $message }}</span>
+                  @enderror
                 </div>
             </div>
-
             {{-- Post Body Field --}}
             <div class="field">
                 <label class="label">Body</label>
                 <div class="control">
                     <textarea name="body" class="textarea @error('body') is-danger @enderror" placeholder="Enter you post here">{{ old('body') }}</textarea>
+                    @error('body')
+                        <span class="has-text-danger">{{ $message }}</span>
+                    @enderror
                 </div>
             </div>
 
