@@ -42,4 +42,12 @@ class PostStoreRequest extends FormRequest
             'body.required' => 'What would a post look like without a body.'
         ];
     }
+
+    public function attributes()
+    {
+        return [
+            'title' => 'Title',
+            'body' => 'Body'
+        ];
+    }
 }
