@@ -29,6 +29,11 @@ class PostStoreRequest extends FormRequest
         ];
     }
 
+    /**
+     * This method add custom messges to validation errors.
+     * 
+     * @return array
+     */
     public function messages()
     {
         return [
