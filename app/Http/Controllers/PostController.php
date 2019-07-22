@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Post;
 use Illuminate\Http\Request;
 use App\Http\Requests\PostStoreRequest;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -40,13 +42,18 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(PostStoreRequest $request)
+    public function store(Request $request)
     {
-        $post = new Post();
-        $validatedData = $request->validated();
-        
-        $validatedData['user_id'] = auth()->id();
-        $post->fill($validatedData);
+        $validator = Validator::make($request->all(), [
+            'title' => 'bail|required|max:255|unique:posts',
+            'body' => 'required|min:5'
+        ]);
+
+        $validator->validate();
+
+        $validated = $validator->validated();
+        $validated['user_id'] = Auth::id();
+        $post = new Post($validated);
         $post->save();
         return redirect()->route('posts.index')->with('msg', 'Post Created: ' . $post->title );
     }
@@ -97,4 +104,5 @@ class PostController extends Controller
 
         return redirect()->route('posts.index')->with('msg', 'Post Deleted: ' . $post->title );
     }
+
 }
