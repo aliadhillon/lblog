@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Lang;
 
 class PostStoreRequest extends FormRequest
 {
@@ -25,7 +26,7 @@ class PostStoreRequest extends FormRequest
     {
         return [
             'title' => 'bail|required|unique:posts|max:255',
-            'body'  => 'required|min:5'
+            'body'  => 'required|min:5|max:12'
         ];
     }
 
@@ -37,9 +38,10 @@ class PostStoreRequest extends FormRequest
     public function messages()
     {
         return [
-            'title.required' => 'Title is required for a post.',
-            'title.unique' => 'This title has already been used, enter another one',
-            'body.required' => 'What would a post look like without a body.'
+            'required' => ':attribute is required to create a post',
+            'unique' => 'A post with the :attribute ":input" already exitsts, enter another one',
+            'min' => ':attribute should be minimum :min characters long',
+            'max' => 'Maximum characters limit for :attribute is :max'
         ];
     }
 
