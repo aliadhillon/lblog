@@ -48,8 +48,16 @@ class PostController extends Controller
             'title' => 'bail|required|max:255|unique:posts',
             'body' => 'required|min:5'
         ]);
-
-        $validator->validate();
+        
+        $validator->after(function($validator){
+            $validator->errors()->add('extra', 'This is the extra error');
+        });
+        
+        if ($validator->fails()) {
+            return redirect()->back()
+                    ->withErrors($validator)
+                    ->withInput();
+        }
 
         $validated = $validator->validated();
         $validated['user_id'] = Auth::id();
