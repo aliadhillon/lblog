@@ -28,4 +28,13 @@ class PostStoreRequest extends FormRequest
             'body'  => 'required|min:5'
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'title.required' => 'Title is required for a post.',
+            'title.unique' => 'This title has already been used, enter another one',
+            'body.required' => 'What would a post look like without a body.'
+        ];
+    }
 }
