@@ -4,9 +4,9 @@
 <div class="section">
     <div class="container box">
         <ul class="list-group list-group-flush is-size-5">
-            <li class="list-group-item">Name: <span class="has-text-info">{{ Auth::user()->name }}</span></li>
-            <li class="list-group-item">Email: <span class="has-text-info">{{ Auth::user()->email }}</span></li>
-            <li class="list-group-item">Posts: <a href="{{ route('posts.index') }}"><span class="has-text-info">{{ Auth::user()->posts->count() }}</span></a></li>
+            <li class="list-group-item">Name: <span class="has-text-primary">{{ $name }}</span></li>
+            <li class="list-group-item">Email: <span class="has-text-primary">{{ $email }}</span></li>
+            <li class="list-group-item">Posts: <a href="{{ route('posts.index') }}"><span class="has-text-primary">{{ $posts }}</span></a></li>
         </ul>
         <br>
         <div class="container">
