@@ -10,14 +10,14 @@
         @endif
         @if ($posts->count())
             <div class="list-group">
-                    @foreach ($posts as $post)
-                        <a href="/posts/{{$post->id}}" class="list-group-item list-group-item-action">{{ $post->title }}</a>
-                    @endforeach
+                @foreach ($posts as $post)
+                    <a href="/posts/{{$post->id}}" class="list-group-item list-group-item-action">{{ $post->title }}</a>
+                @endforeach
             </div
         @else
-            <span>
-                There are no projects to show.
-            </span>
+            <div class="notification has-text-centered">
+                You have not any post yet.
+            </div>
         @endif
     </div>
 </div>

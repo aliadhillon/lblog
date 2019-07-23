@@ -26,7 +26,7 @@ class PostStoreRequest extends FormRequest
     {
         return [
             'title' => 'bail|required|unique:posts|max:255',
-            'body'  => 'required|min:5|max:12'
+            'body'  => 'required'
         ];
     }
 
@@ -45,6 +45,10 @@ class PostStoreRequest extends FormRequest
         ];
     }
 
+    /**
+     * Get the custom attribute names.
+     * @return array
+     */
     public function attributes()
     {
         return [
