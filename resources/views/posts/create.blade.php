@@ -6,7 +6,6 @@
         @include('errors')
     </div> --}}
     <div class="container">
-            @include('errors')
         {{-- Form for new post --}}
         <form action="{{ route('posts.store') }}" method="POST">
             @csrf
