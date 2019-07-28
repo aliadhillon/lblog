@@ -70,7 +70,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        return response('This is the edit method of PostController');
     }
 
     /**
