@@ -24,7 +24,13 @@ Route::resource('/posts', 'PostController');
 
 // These controllers are just for testing puropse only.
 Route::get('/search', 'SearchController');
-Route::get('/test', 'TestController')->name('test');
+
+// Test routes
+Route::name('test.')->prefix('/test')->group(function(){
+    Route::get('/', 'TestController@index')->name('index');
+    Route::get('/form', 'TestController@form')->name('form');
+    Route::post('/store', 'TestController@store')->name('store');
+});
 
 Route::get('/pages', 'PageController');
 Route::get('/pages/{page}', 'PagesController');

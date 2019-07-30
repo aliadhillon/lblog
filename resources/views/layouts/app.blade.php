@@ -72,7 +72,10 @@
                         @endauth
 
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('test') }}">Test</a>
+                            <a class="nav-link" href="{{ route('test.index') }}">Test</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('test.form') }}">Test Form</a>
                         </li>
                     </ul>
 

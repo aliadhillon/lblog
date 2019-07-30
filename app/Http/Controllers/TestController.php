@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\TestStoreRequest;
 
 class TestController extends Controller
 {
@@ -12,9 +13,19 @@ class TestController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function __invoke(Request $request)
+    public function index()
     {
-        return view('test');
+        return view('test.index');
+    }
+
+    public function form()
+    {
+        return view('test.form');
+    }
+
+    public function store(TestStoreRequest $request)
+    {
+        dd($request->data);
     }
 
 }

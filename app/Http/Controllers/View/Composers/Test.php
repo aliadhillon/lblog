@@ -8,10 +8,10 @@ class Test
 {
     public function compose(View $view)
     {
-        $view->with('data', 'This is the data has been added by View::composer from Service Provider.');
+        $view->with('data', 'This is the data is being rendered via View::composer method from Service Provider.');
     }
     public function create(View $view)
     {
-        $view->with('data', 'This is the data has been added by View::composer from Service Provider.');
+        $view->with('data', 'This is the data is being rendered via View::composer method from Service Provider.');
     }
 }
