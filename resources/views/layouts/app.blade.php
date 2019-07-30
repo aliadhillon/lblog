@@ -19,7 +19,7 @@
 
 
     <!-- Styles -->
-    <link rel="stylesheet" href="{{ asset('css/bulma/bulma.css') }} ">
+    {{-- <link rel="stylesheet" href="{{ asset('css/bulma/bulma.css') }} "> --}}
     {{-- <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script> --}}
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
