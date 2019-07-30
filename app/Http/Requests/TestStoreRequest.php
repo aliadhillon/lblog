@@ -24,7 +24,8 @@ class TestStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'data' => 'required|accepted',
+            'data' => 'required',
+            'checkbox' => 'accepted'
         ];
     }
 }

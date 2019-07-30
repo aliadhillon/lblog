@@ -25,7 +25,7 @@ class TestController extends Controller
 
     public function store(TestStoreRequest $request)
     {
-        dd($request->data);
+        dd($request->all());
     }
 
 }
