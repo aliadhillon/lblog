@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
+use Illuminate\Http\Request;
 
 class TestStoreRequest extends FormRequest
 {
@@ -22,11 +23,11 @@ class TestStoreRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(Request $request)
     {
         return [
             'data' => 'required|different:data2|gte:data2',
-            'data2' => 'filled|ip',
+            'data2' => 'required',
             'email' => [
                 'required',
                 'email',
@@ -34,13 +35,25 @@ class TestStoreRequest extends FormRequest
             ],
             'date' => 'required|date|date_equals:today',
             'checkbox' => 'accepted|boolean',
-            'password' => 'required|confirmed',
+            'password' => [
+                'required',
+                'confirmed',
+                Rule::notIn(['password', 'mypassword']),
+            ],
             'image' => [
                 'file',
                 'image',
+                'mimes:png,jpg',
                 'required',
                 Rule::dimensions()->maxWidth(200)->maxHeight(200)->ratio(1.0),
             ],
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'password.not_in' => 'Password cannot be :input, chooce a password which is not easily guessable.'
         ];
     }
 }
