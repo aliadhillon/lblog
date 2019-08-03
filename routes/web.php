@@ -1,5 +1,4 @@
 <?php
-use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,20 +25,22 @@ Route::resource('/posts', 'PostController');
 Route::get('/search', 'SearchController');
 
 // Test routes
-Route::name('test.')->prefix('/test')->group(function(){
+Route::prefix('/test')->name('test.')->group(function(){
     Route::get('/', 'TestController@index')->name('index');
     Route::get('/form', 'TestController@form')->name('form');
-    Route::post('/store', 'TestController@store')->name('store');
+    Route::post('/', 'TestController@store')->name('store');
 });
 
 Route::get('/pages', 'PageController');
 Route::get('/pages/{page}', 'PagesController');
 
 
-Route::name('projects.')->middleware('project')->prefix('/projects')->namespace('Projects')->group(function(){
+Route::prefix('/projects')->middleware('project')->namespace('Projects')->name('projects.')->group(function(){
     Route::get('/', 'ProjectController@index')->name('index');
     Route::get('/{project}', 'ProjectController@show')->name('show');
 });
+
+Route::get('exception', 'ExceptionController');
 
 
 // Route::namespace('Social')->group(function(){

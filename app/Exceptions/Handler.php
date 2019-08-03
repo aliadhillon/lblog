@@ -13,7 +13,12 @@ class Handler extends ExceptionHandler
      * @var array
      */
     protected $dontReport = [
-        //
+        // \Illuminate\Auth\AuthenticationException::class,
+        // \Illuminate\Auth\Access\AuthorizationException::class,
+        // \Symfony\Component\HttpKernel\Exception\HttpException::class,
+        // \Illuminate\Database\Eloquent\ModelNotFoundException::class,
+        // \Illuminate\Validation\ValidationException::class,
+        // \invalidArgumentException::class,
     ];
 
     /**
@@ -47,5 +52,16 @@ class Handler extends ExceptionHandler
     public function render($request, Exception $exception)
     {
         return parent::render($request, $exception);
+    }
+
+    /**
+     * Get the default context for logging
+     * @return array
+     */
+    protected function context()
+    {
+        return array_merge(parent::context(), [
+
+        ]);
     }
 }

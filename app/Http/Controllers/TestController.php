@@ -15,6 +15,7 @@ class TestController extends Controller
      */
     public function index()
     {
+        // abort(403, 'This is a custom message');
         return view('test.index');
     }
 
