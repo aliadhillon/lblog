@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Post;
 use Illuminate\Http\Request;
+use App\Http\Requests\PostStoreRequest;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -39,16 +42,11 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PostStoreRequest $request)
     {
-        $post = new Post();
-        $attributes = $request->validate([
-            'title' => 'required',
-            'body'  => 'required | min:5'
-        ]);
-        
-        $attributes['user_id'] = auth()->id();
-        $post->fill($attributes);
+        $validated = $request->validated();
+        $validated['user_id'] = Auth::id();
+        $post = new Post($validated);
         $post->save();
         return redirect()->route('posts.index')->with('msg', 'Post Created: ' . $post->title );
     }
@@ -72,7 +70,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        return response('This is the edit method of PostController');
     }
 
     /**
@@ -99,4 +97,5 @@ class PostController extends Controller
 
         return redirect()->route('posts.index')->with('msg', 'Post Deleted: ' . $post->title );
     }
+
 }

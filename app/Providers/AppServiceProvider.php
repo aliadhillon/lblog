@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\Validator;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -27,13 +28,13 @@ class AppServiceProvider extends ServiceProvider
         if ($this->app->isLocal()) {
             $this->app->register(TelescopeServiceProvider::class);
         }
-        
-        if ($this->app->environment() !== 'production') {
-            $this->app->register(\Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class);
-        }
 
         Response::macro('myview', function($contents){
             return Response::make(strtoupper($contents));
         });
+
+        Validator::extend('lowercase', function($attribute, $value){
+            return strtolower($value) === $value;
+        }, ':attribute should be lowercase');
     }
 }
