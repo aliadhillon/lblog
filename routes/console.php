@@ -17,6 +17,7 @@ Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());
 })->describe('Display an inspiring quote');
 
-Artisan::command('testing', function () {
-    $this->comment('Yes, command worked');
-})->describe('This is just a testing command');
+Artisan::command('logs:clear', function () {
+    exec('rm ' . storage_path('logs/laravel*'));
+    $this->comment('Laravel logs have been cleared');
+})->describe('Clear all the Laravel logs from storage/logs');
