@@ -1,5 +1,4 @@
 <?php
-use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,6 +39,8 @@ Route::name('projects.')->middleware('project')->prefix('/projects')->namespace(
     Route::get('/', 'ProjectController@index')->name('index');
     Route::get('/{project}', 'ProjectController@show')->name('show');
 });
+
+Route::get('exception', 'ExceptionController');
 
 
 // Route::namespace('Social')->group(function(){
