@@ -6,21 +6,21 @@
         <form action="{{ route('test.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="field">
-                <label class="label">Data</label>
+                <label class="label">First</label>
                 <div class="control">
-                  <input name="data" class="input @error('data') is-danger @enderror" type="text" placeholder="Enter data here" value="{{ old('data') }}">  
+                  <input name="data[first]" class="input @error('data.first') is-danger @enderror" type="text" placeholder="Enter data here" value="{{ old('data.first') }}">  
                 </div>
-                @error('data')
+                @error('data.first')
                   <span class="has-text-danger">{{ $message }}</span>
                 @enderror
             </div>
 
             <div class="field">
-                <label class="label">Data2</label>
+                <label class="label">Second</label>
                 <div class="control">
-                  <input name="data2" class="input @error('data2') is-danger @enderror" type="text" placeholder="Enter data2 here" value="{{ old('data2') }}">
+                  <input name="data[second]" class="input @error('data.second') is-danger @enderror" type="text" placeholder="Enter data.second here" value="{{ old('data.second') }}">
                 </div>
-                @error('data2')
+                @error('data.second')
                   <span class="has-text-danger">{{ $message }}</span>
                 @enderror
             </div>
@@ -95,10 +95,10 @@
             </div>
         </form>
     </div>
-    {{-- <br>
+    <br>
     <div class="container">
       @include('errors')
-    </div> --}}
+    </div>
 
 </div>    
 @endsection
