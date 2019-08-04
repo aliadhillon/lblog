@@ -30,13 +30,16 @@ return [
     | Available Drivers: "single", "daily", "slack", "syslog",
     |                    "errorlog", "monolog",
     |                    "custom", "stack"
+    | Available lavels
+    |---------------------------------------------------------------------------
+    | emergency, alert, critical, error, warning, notice, info and debug
     |
     */
 
     'channels' => [
         'stack' => [
             'driver' => 'stack',
-            'channels' => ['daily'],
+            'channels' => ['daily', 'syslog'],
             'ignore_exceptions' => false,
         ],
 

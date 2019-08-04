@@ -15,6 +15,15 @@ class CustomException extends Exception
      public function report()
      {
         Log::debug($this->getMessage(), ['code' => $this->getCode()]);
+
+        // Log::emergency($message);
+        // Log::alert($message);
+        // Log::critical($message);
+        // Log::error($message);
+        // Log::warning($message);
+        // Log::notice($message);
+        // Log::info($message);
+        // Log::debug($message);
     }
 
     /**

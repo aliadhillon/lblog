@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Http\Requests\TestStoreRequest;
+use Illuminate\Support\Facades\Log;
 
 class TestController extends Controller
 {
@@ -15,7 +15,8 @@ class TestController extends Controller
      */
     public function index()
     {
-        // abort(403, 'This is a custom message');
+        Log::emergency('System is down', ['controller' => 'TestController']);
+        // Log::channel('syslog')->info('This is for the syslog');
         return view('test.index');
     }
 
