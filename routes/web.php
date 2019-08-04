@@ -25,7 +25,7 @@ Route::resource('/posts', 'PostController');
 Route::get('/search', 'SearchController');
 
 // Test routes
-Route::prefix('/test')->name('test.')->group(function(){
+Route::prefix('/test')->namespace('Test')->name('test.')->group(function(){
     Route::get('/', 'TestController@index')->name('index');
     Route::get('/form', 'TestController@form')->name('form');
     Route::post('/', 'TestController@store')->name('store');

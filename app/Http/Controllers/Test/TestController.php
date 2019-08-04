@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Test;
 
-use App\Http\Requests\TestStoreRequest;
 use Illuminate\Support\Facades\Log;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\TestStoreRequest;
 
 class TestController extends Controller
 {
@@ -15,8 +16,9 @@ class TestController extends Controller
      */
     public function index()
     {
-        Log::emergency('System is down', ['controller' => 'TestController']);
+        // Log::emergency('System is down', ['controller' => 'TestController']);
         // Log::channel('syslog')->info('This is for the syslog');
+        Log::stack(['daily', 'syslog'])->emergency('There is some emergency here');
         return view('test.index');
     }
 
