@@ -30,6 +30,7 @@ return [
     | Available Drivers: "single", "daily", "slack", "syslog",
     |                    "errorlog", "monolog",
     |                    "custom", "stack"
+    |---------------------------------------------------------------------------
     | Available lavels
     |---------------------------------------------------------------------------
     | emergency, alert, critical, error, warning, notice, info and debug
@@ -39,7 +40,7 @@ return [
     'channels' => [
         'stack' => [
             'driver' => 'stack',
-            'channels' => ['daily', 'syslog'],
+            'channels' => ['daily', 'slack'],
             'ignore_exceptions' => false,
         ],
 
@@ -51,7 +52,6 @@ return [
 
         'daily' => [
             'driver' => 'daily',
-            'tap' [App\Lgging\CustomizeFormatter::class],
             'path' => storage_path('logs/laravel.log'),
             'level' => 'debug',
             'days' => 14,
@@ -60,9 +60,9 @@ return [
         'slack' => [
             'driver' => 'slack',
             'url' => env('LOG_SLACK_WEBHOOK_URL'),
-            'username' => 'Laravel Log',
+            'username' => 'Ali A. Dhillon',
             'emoji' => ':boom:',
-            'level' => 'critical',
+            'level' => 'bebug',
         ],
 
         'papertrail' => [
