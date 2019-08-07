@@ -16,9 +16,7 @@ class TestController extends Controller
      */
     public function index()
     {
-        // Log::emergency('System is down', ['controller' => 'TestController']);
-        // Log::channel('syslog')->info('This is for the syslog');
-        Log::stack(['daily', 'errorlog'])->emergency('There is some emergency here');
+        Log::emergency('This is a sample emergnecy message');
         return view('test.index');
     }
 
