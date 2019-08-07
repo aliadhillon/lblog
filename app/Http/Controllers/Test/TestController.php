@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Test;
 
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\TestStoreRequest;
 
 class TestController extends Controller
@@ -15,7 +16,7 @@ class TestController extends Controller
      */
     public function index()
     {
-        // abort(403, 'This is a custom message');
+        Log::emergency('This is a sample emergnecy message');
         return view('test.index');
     }
 

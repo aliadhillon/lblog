@@ -30,6 +30,10 @@ return [
     | Available Drivers: "single", "daily", "slack", "syslog",
     |                    "errorlog", "monolog",
     |                    "custom", "stack"
+    |---------------------------------------------------------------------------
+    | Available lavels
+    |---------------------------------------------------------------------------
+    | emergency, alert, critical, error, warning, notice, info and debug
     |
     */
 
@@ -56,9 +60,9 @@ return [
         'slack' => [
             'driver' => 'slack',
             'url' => env('LOG_SLACK_WEBHOOK_URL'),
-            'username' => 'Laravel Log',
+            'username' => 'Ali A. Dhillon',
             'emoji' => ':boom:',
-            'level' => 'critical',
+            'level' => 'bebug',
         ],
 
         'papertrail' => [
