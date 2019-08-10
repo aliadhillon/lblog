@@ -16,7 +16,8 @@ class TestController extends Controller
      */
     public function index()
     {
-        Log::emergency('This is a sample emergnecy message');
+        // Log::emergency('This is a sample emergnecy message');
+        
         return view('test.index');
     }
 
