@@ -46,8 +46,10 @@ class PostController extends Controller
     {
         $validated = $request->validated();
         $validated['user_id'] = Auth::id();
-        $post = new Post($validated);
-        $post->save();
+        // $post = new Post($validated);
+        // $post = Post::make($validated);
+        // $post->save();
+        $post = Post::create($validated);
         return redirect()->route('posts.index')->with('msg', 'Post Created: ' . $post->title );
     }
 
