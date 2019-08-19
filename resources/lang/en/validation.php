@@ -132,6 +132,9 @@ return [
         'title' => [
             'required' => 'Haza, we needon titlon',
         ],
+        'checkbox' => [
+            'accepted' => ':attribute accept tery piyo ney karna a'
+        ]
     ],
 
     /*
@@ -145,6 +148,8 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'checkbox' => 'Aa dabba'
+    ],
 
 ];

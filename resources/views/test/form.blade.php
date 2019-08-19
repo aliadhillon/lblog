@@ -2,8 +2,8 @@
 
 @section('content')
 <div class="section">
-    <div class="container">
-        <form action="{{ route('test.store') }}" method="POST" enctype="multipart/form-data">
+    <div class="container" id="form">
+        <form action="{{ route('test.store') . '#form' }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="field">
                 <label class="label">First</label>
@@ -96,9 +96,9 @@
         </form>
     </div>
     <br>
-    <div class="container">
+    {{-- <div class="container">
       @include('errors')
-    </div>
+    </div> --}}
 
 </div>    
 @endsection
